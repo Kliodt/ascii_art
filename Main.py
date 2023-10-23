@@ -37,9 +37,8 @@ gray = im.convert("L")  # to grayscale
 gray = gray.transform((output_width, output_height), Image.Transform.EXTENT, (0, 0, im.width, im.height))
 
 pix = gray.load()
-pixels = [[pix[i, j] for i in range(0, output_width)] for j in range(0, output_height)]
 
-lines = ["".join([get_symbol(i) for i in j]) for j in pixels]
+lines = ["".join([get_symbol(pix[i, j]) for i in range(0, output_width)]) for j in range(0, output_height)]
 
 write_to_file(lines, output_file_name)
 
